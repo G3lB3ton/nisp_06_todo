@@ -1,60 +1,116 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+  font-family: "Inter", Arial, sans-serif;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px;
+  padding: 60px 20px;
+  color: white;
+}
+
+/* Kontener aplikacji */
+.app-container {
+  width: 100%;
+  max-width: 450px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  animation: fadeIn 0.8s ease-out;
+}
+
+/* Animacja wejścia */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Input + przycisk */
+.input-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 #task-input {
-  padding: 8px 12px;
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 10px;
+  border: none;
   font-size: 16px;
+  outline: none;
+  background: rgba(255,255,255,0.8);
 }
 
-#add-btn {
-  padding: 8px 16px;
-  margin-left: 8px;
-  font-size: 16px;
+.btn {
+  background: #ffffff;
+  color: #2575fc;
+  border: none;
+  padding: 12px 18px;
+  border-radius: 10px;
   cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  transition: transform 0.15s, background 0.2s;
 }
 
+.btn:hover {
+  background: #e6e6e6;
+  transform: translateY(-2px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+/* Lista zadań */
 #task-list {
   list-style: none;
-  padding: 0;
-  margin-top: 20px;
-  width: 300px;
+  margin-top: 10px;
 }
 
 #task-list li {
-  background: white;
-  border: 1px solid #ccc;
-  padding: 10px 14px;
-  margin-bottom: 10px;
-  border-radius: 6px;
+  background: rgba(255,255,255,0.25);
+  backdrop-filter: blur(6px);
+  padding: 14px 16px;
+  border-radius: 12px;
+  margin-bottom: 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  animation: slideIn 0.3s ease-out;
 }
 
-#task-list li.done {
+/* Animacja dodawania elementu */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Checkbox + tekst */
+#task-list li span {
+  flex: 1;
+  font-size: 16px;
+}
+
+/* Styl po ukończeniu */
+#task-list li.done span {
   text-decoration: line-through;
   opacity: 0.6;
 }
 
-.delete-btn {
-    background: #ff4d4d;
-    border: none;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-    padding: 8px 16px;
-    margin-left: 8px;
-    font-size: 16px;
-    
-}
-
-.delete-btn:hover {
-    background: #e60000;
+/* Przycisk usuń — taki sam jak dodaj */
+#task-list .btn {
+  padding: 8px 14px;
+  font-size: 14px;
 }
