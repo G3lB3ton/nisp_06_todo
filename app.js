@@ -18,8 +18,17 @@ button.addEventListener('click', () => {
   const text = document.createElement('span');
   text.textContent = value;
 
+  const deleteBtn = document.createElement('button');
+  deleteBtn.textContent = 'Usuń';
+  deleteBtn.classList.add('delete-btn');
+
+  deleteBtn.addEventListener('click', () => {
+    li.remove();
+  });
+
   li.appendChild(checkbox);
   li.appendChild(text);
+  li.appendChild(deleteBtn);
   list.appendChild(li);
 
   input.value = '';
